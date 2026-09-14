@@ -1,6 +1,6 @@
 # Parneet Soni - Product & Strategy
 
-[View the portfolio](https://parneet-soni-portfolio.vercel.app/)
+[View the portfolio](https://parneet-cv.vercel.app/)
 
 Personal portfolio presenting product leadership across AI, fintech, edtech, and marketplaces. Four employer project overviews and two independent case studies connect product scope, contribution, and outcomes. Employer interfaces and functional reconstructed prototypes are not included.
 
@@ -43,13 +43,13 @@ Read [design principles](docs/design/DESIGN_PRINCIPLES.md) and [component contra
 Review builds default to `noindex`. In the dedicated Vercel project's **Production environment only**, configure:
 
 - `PUBLICATION_APPROVED=true`
-- `PRODUCTION_ORIGIN=https://parneet-soni-portfolio.vercel.app`
+- `PRODUCTION_ORIGIN=https://parneet-cv.vercel.app`
 
 Leave these variables unset in Preview and Development. Preview builds also enforce non-indexing when `VERCEL_ENV=preview`. Canonical links, social imagery, sitemap, and robots use the explicit production origin. Noindex is not access control.
 
 The external résumé is enabled in profile data and needs no local PDF. Optional local-PDF support requires both an owner-approved `public/resume/parneet-soni-resume.pdf` and `RESUME_APPROVED=true`; never copy a private CV there by default.
 
-The dedicated project is `pss15/parneet-soni-portfolio`. Deployment currently uses the Vercel CLI; automatic GitHub deployments are not connected because the account's Vercel GitHub App is not installed. A Git push alone does not deploy this site.
+The dedicated project is `pss15/parneet-soni-portfolio`, linked to `soniparneet/portfolio` with `main` as its production branch. Vercel's Git integration handles branch and production deployments; confirm the deployed commit in Vercel after pushing. The CLI workflow below remains available for explicit deployments.
 
 For future updates, create a branch, run the checks above, commit and push only reviewed files, then create a non-indexable preview:
 
@@ -65,7 +65,7 @@ Inspect the preview, including desktop/mobile routes and image interactions. Kee
 npx vercel@59.16.0 deploy --prod --scope pss15
 ```
 
-Do not promote a review build directly: its build-time metadata is deliberately non-indexable. Verify the stable public URL and exact deployed commit before creating a version tag and GitHub Release. Native branch deployments can be enabled later by granting the Vercel GitHub App access to this repository and running `vercel git connect`; no custom CI service is required.
+Do not promote a review build directly: its build-time metadata is deliberately non-indexable. Verify the stable public URL and exact deployed commit before creating a version tag and GitHub Release.
 
 Do not publish raw images, private source materials, credentials, browser state, or review archives. `.gitignore` and `.vercelignore` are safeguards, not substitutes for inspecting staged files, upload payloads, and reachable history.
 
