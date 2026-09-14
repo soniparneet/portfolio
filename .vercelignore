@@ -1,6 +1,8 @@
 source-materials/
 node_modules
 .next/
+*.tsbuildinfo
+next-env.d.ts
 Images/
 images/
 *.pdf

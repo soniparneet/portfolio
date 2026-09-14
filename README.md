@@ -47,7 +47,25 @@ Leave these variables unset in Preview and Development. Preview builds also enfo
 
 The external résumé is enabled in profile data and needs no local PDF. Optional local-PDF support requires both an owner-approved `public/resume/parneet-soni-resume.pdf` and `RESUME_APPROVED=true`; never copy a private CV there by default.
 
-Connect the dedicated Vercel project through GitHub integration: work on a branch, push it for a preview, inspect desktop/mobile routes and image interactions, run checks, and merge reviewed changes to `main` for production. Verify the stable public URL and deployed commit before tagging a release. Do not publish raw images, private source materials, credentials, browser state, or review archives. `.gitignore` and `.vercelignore` are safeguards, not substitutes for inspecting staged files and reachable history.
+The dedicated project is `pss15/parneet-soni-portfolio`. Deployment currently uses the Vercel CLI; automatic GitHub deployments are not connected because the account's Vercel GitHub App is not installed. A Git push alone does not deploy this site.
+
+For future updates, create a branch, run the checks above, commit and push only reviewed files, then create a non-indexable preview:
+
+```sh
+npx vercel@59.16.0 link --project parneet-soni-portfolio --scope pss15
+npx vercel@59.16.0 deploy --dry --json --scope pss15
+npx vercel@59.16.0 deploy --scope pss15
+```
+
+Inspect the preview, including desktop/mobile routes and image interactions. Keep preview protection enabled; `vercel curl / --deployment <preview-url>` provides authenticated diagnostic access. Merge approved changes to `main`, ensure the checkout is clean and pushed, and build a fresh production deployment using Production settings:
+
+```sh
+npx vercel@59.16.0 deploy --prod --scope pss15
+```
+
+Do not promote a review build directly: its build-time metadata is deliberately non-indexable. Verify the stable public URL and exact deployed commit before creating a version tag and GitHub Release. Native branch deployments can be enabled later by granting the Vercel GitHub App access to this repository and running `vercel git connect`; no custom CI service is required.
+
+Do not publish raw images, private source materials, credentials, browser state, or review archives. `.gitignore` and `.vercelignore` are safeguards, not substitutes for inspecting staged files, upload payloads, and reachable history.
 
 To roll back, use the dedicated project's Vercel deployment history to restore a previously verified production deployment, then revert the faulty commit through a reviewed branch so Git and production agree. Do not overwrite release tags. This portfolio needs no purchased domain or paid service integration.
 
