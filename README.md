@@ -1,5 +1,7 @@
 # Parneet Soni - Product & Strategy
 
+[View the portfolio](https://parneet-soni-portfolio.vercel.app/)
+
 Personal portfolio presenting product leadership across AI, fintech, edtech, and marketplaces. Four employer project overviews and two independent case studies connect product scope, contribution, and outcomes. Employer interfaces and functional reconstructed prototypes are not included.
 
 ## Local setup
@@ -41,7 +43,7 @@ Read [design principles](docs/design/DESIGN_PRINCIPLES.md) and [component contra
 Review builds default to `noindex`. In the dedicated Vercel project's **Production environment only**, configure:
 
 - `PUBLICATION_APPROVED=true`
-- `PRODUCTION_ORIGIN`: the actual stable HTTPS production origin, without a path.
+- `PRODUCTION_ORIGIN=https://parneet-soni-portfolio.vercel.app`
 
 Leave these variables unset in Preview and Development. Preview builds also enforce non-indexing when `VERCEL_ENV=preview`. Canonical links, social imagery, sitemap, and robots use the explicit production origin. Noindex is not access control.
 
